@@ -58,7 +58,7 @@
           
                             <!--<a class="small text-muted" href="#!">Forgot password?</a>-->
                             <p class="mb-5 pb-lg-2" style="color: #393f81;">Aún no tienes cuenta? 
-                              <a href="" style="color: #393f81;">Registrate Aquí</a>
+                              <a href="/register" style="color: #393f81;">Registrate Aquí</a>
                             </p>
                           </form>
           
