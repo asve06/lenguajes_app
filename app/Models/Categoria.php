@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Categoria extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
-    //protected $fillable = ['nombre','descripcion'];
+    protected $primaryKey = 'categoriaID';
+
+    protected $fillable = [
+        'nombre',
+        'detalles',
+    ];
 }
