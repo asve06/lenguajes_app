@@ -29,10 +29,10 @@ class ProveedorController extends Controller
             'nombre' => 'required',
             'apellido' => 'required',
             'numero' => 'required',
-            'direccion' => 'required',
+            'direccion' => 'required'
         ]);
         Proveedor::create($request->all());
-        return redirect()->route('proveedores.index')->with('success', 'proveedor created successfully');
+        return redirect()->route('proveedores.index')->with('success', 'proveedor creado exitosamente');
     }
 
 
@@ -41,31 +41,30 @@ class ProveedorController extends Controller
         //
     }
 
-    public function edit($id)
+    public function edit(Proveedor $proveedor)
     {
-        $proveedor = Proveedor::find($id);
-        return view('proveedor.edit', compact('proveedor'));
+        $proveedor = Proveedor::find($proveedor->proveedorID);
+        return view('proveedores.edit', compact('proveedor'));
     }
 
-
-    public function update(Request $request, $id)
+    public function update(Request $request, Proveedor $proveedor)
     {
         $request->validate([
             'nombre' => 'required',
             'apellido' => 'required',
             'numero' => 'required',
-            'direccion' => 'required',
+            'direccion' => 'required'
         ]);
-        $proveedor = Proveedor::find($id);
+        $proveedor = Proveedor::find($proveedor->proveedorID);
         $proveedor->update($request->all());
 
-        return redirect()->route('proveedores.index')->with('success', 'proveedor updated successfully');
+        return redirect()->route('proveedores.index')->with('success', 'proveedor actualizado exitosamente');
     }
 
-    public function destroy($id)
+    public function destroy(Proveedor $proveedor)
     {
-        $proveedor = Proveedor::find($id);
+        $proveedor = Proveedor::find($proveedor->proveedorID);
         $proveedor->delete();
-        return redirect()->route('proveedores.index')->with('success', 'proveedor deleted successfully');
+        return redirect()->route('proveedores.index')->with('success', 'proveedor eliminado exitosamente');
     }
 }

@@ -36,31 +36,30 @@ class CategoriaController extends Controller
 
     public function show(Categoria $categoria)
     {
-        
+        //
     }
 
-    public function edit($id)
+    public function edit(Categoria $categoria)
     {
-        $categoria = Categoria::find($id);
-        return view('categoria.edit', compact('categoria'));
+        $categoria = Categoria::find($categoria->categoriaID);
+        return view('categorias.edit', compact('categoria'));
     }
 
-
-    public function update(Request $request, $id)
+    public function update(Request $request, Categoria $categoria)
     {
         $request->validate([
             'nombre' => 'required',
             'detalles' => 'required',
         ]);
-        $categoria = Categoria::find($id);
+        $categoria = Categoria::find($categoria->categoriaID);
         $categoria->update($request->all());
 
         return redirect()->route('categorias.index')->with('success', 'categoria actualizada exitosamente');
     }
 
-    public function destroy($id)
+    public function destroy(Categoria $categoria)
     {
-        $categoria = Categoria::find($id);
+        $categoria = Categoria::find($categoria->categoriaID);
         $categoria->delete();
         return redirect()->route('categorias.index')->with('success', 'categoria eliminada exitosamente');
     }

@@ -8,12 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Proveedor extends Model
 {
     use HasFactory;
-
     public $timestamps = false;
-    protected $table = 'proveedores';
+
     protected $primaryKey = 'proveedorID';
 
-  
     protected $fillable = [
         'nombre',
         'apellido',
