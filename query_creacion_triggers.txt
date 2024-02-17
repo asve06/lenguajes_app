@@ -1,0 +1,40 @@
+CREATE OR REPLACE FUNCTION aumentar_existencia()
+RETURNS TRIGGER AS $$
+BEGIN
+  UPDATE Productos
+  SET existenciaactual = existenciaactual + NEW.cantidadIngresada
+  WHERE productoID = NEW.productoID;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_aumentar_existencia
+AFTER INSERT ON Ingresos
+FOR EACH ROW
+EXECUTE FUNCTION aumentar_existencia();
+
+CREATE OR REPLACE FUNCTION disminuir_existencia()
+RETURNS TRIGGER AS $$
+DECLARE
+  nueva_existencia INT;
+BEGIN
+  -- Actualiza la existencia actual y captura el nuevo valor
+  UPDATE Productos
+  SET existenciaActual = existenciaActual - NEW.cantidadEgresada
+  WHERE productoID = NEW.productoID
+  RETURNING existenciaActual INTO nueva_existencia;
+
+  -- Verifica si la nueva existencia es negativa
+  IF nueva_existencia < 0 THEN
+    RAISE EXCEPTION 'La existencia actual no puede ser negativa.';
+  END IF;
+
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER trg_disminuir_existencia
+AFTER INSERT ON Egresos
+FOR EACH ROW
+EXECUTE FUNCTION disminuir_existencia();

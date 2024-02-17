@@ -1,0 +1,4 @@
+El numero de camisetas deberia reducirse en 30 unidades, es decir, la existenciaactual pasara de 50 a 20
+
+INSERT INTO Egresos (fecha, productoID, cantidadEgresada) VALUES
+(NOW(), 2, 30);
