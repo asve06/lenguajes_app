@@ -4,16 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
-use App\Models\Egresos;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
-class EgresosController extends Controller
+class ProductoController extends Controller
 {
     
     public function index()
     {
         //
-         
     }
 
     public function create()
@@ -28,22 +27,22 @@ class EgresosController extends Controller
     }
 
 
-    public function show(Egresos $egresos)
+    public function show(Producto $Producto)
     {
         //
     }
 
-    public function edit(Egresos $egresos)
+    public function edit(Producto $Producto)
     {
         //
     }
 
-    public function update(Request $request, Egresos $egresos)
+    public function update(Request $request, Producto $Producto)
     {
         //
     }
 
-    public function destroy(Egresos $egresos)
+    public function destroy(Producto $Producto)
     {
         //
     }

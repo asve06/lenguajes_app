@@ -15,7 +15,7 @@ class CreateEgresosTable extends Migration
     {
         Schema::create('egresos', function (Blueprint $table) {
             $table->id('egresoID');
-            $table->integer('cantidad egresada');
+            $table->integer('cantidad_egresada');
             $table->timestamps();
             $table->foreignId('productoId')->constrained('productos', 'productoID');
         });

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
@@ -25,7 +25,7 @@ Route::get('/login', [LoginController::class, 'show']);
 Route::post('/login', [LoginController::class, 'login']);
 
 
-Route::resource('/categorias', CategoriasController::class);
+Route::resource('/categorias', CategoriaController::class);
 
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/logout', [LogoutController::class, 'logout']);

@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
-use App\Models\Categorias;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CategoriasController extends Controller
+class CategoriaController extends Controller
 {
     
     public function index()
@@ -30,22 +30,22 @@ class CategoriasController extends Controller
     }
 
 
-    public function show(Categorias $categorias)
+    public function show(Categoria $categoria)
     {
         //
     }
 
-    public function edit(Categorias $categorias)
+    public function edit(Categoria $categoria)
     {
         //
     }
 
-    public function update(Request $request, Categorias $categorias)
+    public function update(Request $request, Categoria $categoria)
     {
         //
     }
 
-    public function destroy(Categorias $categorias)
+    public function destroy(Categoria $categoria)
     {
         //
     }

@@ -3,8 +3,7 @@
 <div class="col-20">
   <h1>Home</h1>
   @auth
-    <p>Welcome, {{$username}}</p>
-    <p><a href="/logout">Logout</a></p>
+    <p>Bienvenido {{$username ?? ''}} a GesInv !, a la izquierda encontraras las opciones disponibles. </p>
   @endauth
   @guest
     <p>Para ver el contenido <a href="/login">inicia sesion</a></p>

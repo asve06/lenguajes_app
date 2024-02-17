@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
-use App\Models\Proveedores;
+use App\Models\Egreso;
 use Illuminate\Http\Request;
 
-class ProveedoresController extends Controller
+class EgresoController extends Controller
 {
     
     public function index()
@@ -28,22 +28,22 @@ class ProveedoresController extends Controller
     }
 
 
-    public function show(Proveedores $proveedores)
+    public function show(Egreso $Egreso)
     {
         //
     }
 
-    public function edit(Proveedores $proveedores)
+    public function edit(Egreso $Egreso)
     {
         //
     }
 
-    public function update(Request $request, Proveedores $proveedores)
+    public function update(Request $request, Egreso $Egreso)
     {
         //
     }
 
-    public function destroy(Proveedores $proveedores)
+    public function destroy(Egreso $Egreso)
     {
         //
     }

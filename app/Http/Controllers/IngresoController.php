@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
-use App\Models\Ingresos;
+use App\Models\Ingreso;
 use Illuminate\Http\Request;
 
-class IngresosController extends Controller
+class IngresoController extends Controller
 {
     
     public function index()
@@ -28,22 +28,22 @@ class IngresosController extends Controller
     }
 
 
-    public function show(Ingresos $ingresos)
+    public function show(Ingreso $Ingreso)
     {
         //
     }
 
-    public function edit(Ingresos $ingresos)
+    public function edit(Ingreso $Ingreso)
     {
         //
     }
 
-    public function update(Request $request, Ingresos $ingresos)
+    public function update(Request $request, Ingreso $Ingreso)
     {
         //
     }
 
-    public function destroy(Ingresos $ingresos)
+    public function destroy(Ingreso $Ingreso)
     {
         //
     }

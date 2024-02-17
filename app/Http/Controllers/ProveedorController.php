@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
-use App\Models\Productos;
+use App\Models\Proveedor;
 use Illuminate\Http\Request;
 
-class ProductosController extends Controller
+class ProveedorController extends Controller
 {
     
     public function index()
     {
         //
+         
     }
 
     public function create()
@@ -27,22 +28,22 @@ class ProductosController extends Controller
     }
 
 
-    public function show(Productos $productos)
+    public function show(Proveedor $Proveedor)
     {
         //
     }
 
-    public function edit(Productos $productos)
+    public function edit(Proveedor $Proveedor)
     {
         //
     }
 
-    public function update(Request $request, Productos $productos)
+    public function update(Request $request, Proveedor $Proveedor)
     {
         //
     }
 
-    public function destroy(Productos $productos)
+    public function destroy(Proveedor $Proveedor)
     {
         //
     }

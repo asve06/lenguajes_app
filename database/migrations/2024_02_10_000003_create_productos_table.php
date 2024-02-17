@@ -18,7 +18,7 @@ class CreateProductosTable extends Migration
             $table->string('nombre');
             $table->decimal('precio', 10, 2);
             $table->string('descripcion');
-            $table->integer('existencia actual');
+            $table->integer('existencia_actual');
             $table->foreignId('categoriaID')->constrained('categorias', 'categoriaID');
             $table->foreignId('proveedorID')->constrained('proveedores', 'proveedorID');
         });
