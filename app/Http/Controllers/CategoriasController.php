@@ -6,13 +6,15 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
 use App\Models\Categorias;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriasController extends Controller
 {
     
     public function index()
     {
-        //
+        $username = Auth::user()->username;
+        return view('user.categoria', ['username' =>$username]);
          
     }
 
