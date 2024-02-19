@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categoria extends Model
+class Label extends Model
 {
     use HasFactory;
     public $timestamps = false;
 
-    protected $primaryKey = 'categoriaID';
+    protected $primaryKey = 'labelID';
 
     protected $fillable = [
-        'nombre',
-        'detalles',
+        'name',
+        'details',
     ];
 }

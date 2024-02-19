@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
-use App\Models\Ingreso;
+use App\Models\Sale;
 use Illuminate\Http\Request;
 
-class IngresoController extends Controller
+class SaleController extends Controller
 {
-    
+
     public function index()
     {
         //
@@ -28,22 +28,22 @@ class IngresoController extends Controller
     }
 
 
-    public function show(Ingreso $Ingreso)
+    public function show(Sale $sale)
     {
         //
     }
 
-    public function edit(Ingreso $Ingreso)
+    public function edit(Sale $sale)
     {
         //
     }
 
-    public function update(Request $request, Ingreso $Ingreso)
+    public function update(Request $request, Sale $sale)
     {
         //
     }
 
-    public function destroy(Ingreso $Ingreso)
+    public function destroy(Sale $sale)
     {
         //
     }

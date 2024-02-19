@@ -6,8 +6,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
 
-use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\LabelController;
+use App\Http\Controllers\OriginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +31,5 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/logout', [LogoutController::class, 'logout']);
 
-Route::resource('categorias', CategoriaController::class);
-Route::resource('proveedores', ProveedorController::class);
+Route::resource('labels', LabelController::class);
+Route::resource('origins', OriginController::class);

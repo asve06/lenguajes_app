@@ -42,7 +42,7 @@
                     <div class="card-body pt-3">
                         <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="/categorias">
+                                <a class="nav-link text-dark" href="/labels">
                                     <span>Categorias</span></a>
                             </li>
                             <li class="nav-item">
@@ -50,7 +50,7 @@
                                     <span>Productos</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text'dark" href="/proveedores">
+                                <a class="nav-link text'dark" href="/purchases">
                                     <span>Proveedores</span></a>
                             </li>
                             <li class="nav-item">

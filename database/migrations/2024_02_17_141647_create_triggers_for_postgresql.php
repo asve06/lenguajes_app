@@ -15,45 +15,45 @@ class CreateTriggersForPostgresql extends Migration
     public function up()
     {
         DB::unprepared('
-            CREATE OR REPLACE FUNCTION aumentar_existencia()
+            CREATE OR REPLACE FUNCTION increase_stock()
             RETURNS TRIGGER AS $$
             BEGIN
-              UPDATE Productos
-              SET existenciaactual = existenciaactual + NEW.cantidadIngresada
-              WHERE productoID = NEW.productoID;
+              UPDATE Products
+              SET current_stock = current_stock + NEW.entered_quantity
+              WHERE productID = NEW.productID;
               RETURN NEW;
             END;
             $$ LANGUAGE plpgsql;
 
-            CREATE TRIGGER trg_aumentar_existencia
-            AFTER INSERT ON Ingresos
+            CREATE TRIGGER trg_increase_stock
+            AFTER INSERT ON Purchases
             FOR EACH ROW
-            EXECUTE FUNCTION aumentar_existencia();
+            EXECUTE FUNCTION increase_stock();
         ');
 
         DB::unprepared('
-            CREATE OR REPLACE FUNCTION disminuir_existencia()
+            CREATE OR REPLACE FUNCTION decrease_stock()
             RETURNS TRIGGER AS $$
             DECLARE
-              nueva_existencia INT;
+              new_stock INT;
             BEGIN
-              UPDATE Productos
-              SET existenciaActual = existenciaActual - NEW.cantidadEgresada
-              WHERE productoID = NEW.productoID
-              RETURNING existenciaActual INTO nueva_existencia;
+              UPDATE Products
+              SET current_stock = current_stock - NEW.egressed_quantity
+              WHERE productID = NEW.productID
+              RETURNING current_stock INTO new_stock;
 
-              IF nueva_existencia < 0 THEN
-                RAISE EXCEPTION \'La existencia actual no puede ser negativa.\';
+              IF new_stock < 0 THEN
+                RAISE EXCEPTION \'Current stock cannot be negative.\';
               END IF;
 
               RETURN NEW;
             END;
             $$ LANGUAGE plpgsql;
 
-            CREATE TRIGGER trg_disminuir_existencia
-            AFTER INSERT ON Egresos
+            CREATE TRIGGER trg_decrease_stock
+            AFTER INSERT ON Sales
             FOR EACH ROW
-            EXECUTE FUNCTION disminuir_existencia();
+            EXECUTE FUNCTION decrease_stock();
         ');
     }
 
@@ -64,8 +64,9 @@ class CreateTriggersForPostgresql extends Migration
      */
     public function down()
     {
-        DB::unprepared('DROP TRIGGER IF EXISTS trg_aumentar_existencia ON Ingresos;');
-        DB::unprepared('DROP FUNCTION IF EXISTS aumentar_existencia;');
-        DB::unprepared('DROP TRIGGER IF EXISTS trg_disminuir_existencia ON Egresos;');
-        DB::unprepared('DROP FUNCTION IF EXISTS disminuir_existencia;');    }
+        DB::unprepared('DROP TRIGGER IF EXISTS trg_increase_stock ON Purchases;');
+        DB::unprepared('DROP FUNCTION IF EXISTS increase_stock;');
+        DB::unprepared('DROP TRIGGER IF EXISTS trg_decrease_stock ON Sales;');
+        DB::unprepared('DROP FUNCTION IF EXISTS decrease_stock;');
+    }
 }

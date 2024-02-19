@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
-use App\Models\Producto;
+use App\Models\Purchase;
 use Illuminate\Http\Request;
 
-class ProductoController extends Controller
+class PurchaseController extends Controller
 {
     
     public function index()
     {
         //
+         
     }
 
     public function create()
@@ -27,22 +28,22 @@ class ProductoController extends Controller
     }
 
 
-    public function show(Producto $Producto)
+    public function show(Purchase $Purchase)
     {
         //
     }
 
-    public function edit(Producto $Producto)
+    public function edit(Purchase $Purchase)
     {
         //
     }
 
-    public function update(Request $request, Producto $Producto)
+    public function update(Request $request, Purchase $Purchase)
     {
         //
     }
 
-    public function destroy(Producto $Producto)
+    public function destroy(Purchase $Purchase)
     {
         //
     }

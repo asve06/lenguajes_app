@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEgresosTable extends Migration
+class CreateSalesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateEgresosTable extends Migration
      */
     public function up()
     {
-        Schema::create('egresos', function (Blueprint $table) {
-            $table->id('egresoID');
-            $table->integer('cantidad_egresada');
+        Schema::create('sales', function (Blueprint $table) {
+            $table->id('saleID');
+            $table->integer('quantity');
             $table->timestamps();
-            $table->foreignId('productoId')->constrained('productos', 'productoID');
+            $table->foreignId('productID')->constrained('products', 'productID');
         });
     }
 
@@ -28,6 +28,6 @@ class CreateEgresosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('egresos');
+        Schema::dropIfExists('sales');
     }
 }
