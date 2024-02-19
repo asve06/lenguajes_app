@@ -15,7 +15,7 @@ class CreateIngresosTable extends Migration
     {
         Schema::create('ingresos', function (Blueprint $table) {
             $table->id('ingresoID');
-            $table->integer('cantidad ingresada');
+            $table->integer('cantidad_ingresada');
             $table->timestamps();
             $table->foreignId('productoId')->constrained('productos', 'productoID');
         });
