@@ -15,12 +15,13 @@ class IngresoController extends Controller
     public function index()
     {
         $ingresos = Ingreso::with('producto')->get();
-        return view('user.ingreso', ['ingresos' => $ingresos]);
+        $productos = Producto::all();
+        return view('user.ingreso', ['ingresos' => $ingresos, 'productos' => $productos]);
     }
 
     public function create()
     {
-        //return view('adds.cingreso');
+        //
     }
 
 
@@ -28,7 +29,7 @@ class IngresoController extends Controller
 {
     $request->validate([
         'cantidad_ingresada' => 'required',
-        'productoId' => 'required'
+        'productoID' => 'required|exists:productos,productoID'
     ]);
     Ingreso::create($request->all());
     return redirect()->route('ingresos.index')->with('success', 'Ingreso creado exitosamente');
@@ -42,24 +43,22 @@ class IngresoController extends Controller
 
     public function edit(Ingreso $ingreso)
     {
-        $ingreso = Ingreso::find($ingreso->ingresoID);
-        return view('ingresos.edit', compact('ingreso'));
+        //
     }
 
     public function update(Request $request, Ingreso $ingreso)
     {
         $request->validate([
             'cantidad_ingresada' => 'required',
+            'productoID' => 'required|exists:productos,productoID'
         ]);
 
         $ingreso->update($request->all());
-
         return redirect()->route('ingresos.index')->with('success', 'Ingreso actualizado exitosamente');
     }
 
     public function destroy(Ingreso $ingreso)
     {
-        $ingreso = Ingreso::find($ingreso->ingresoID);
         $ingreso->delete();
         return redirect()->route('ingresos.index')->with('success', 'ingreso eliminada exitosamente');
     }

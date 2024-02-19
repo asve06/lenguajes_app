@@ -20,7 +20,7 @@ class CreateProductosTable extends Migration
             $table->string('descripcion');
             $table->integer('existencia_actual');
             $table->foreignId('categoriaID')->constrained('categorias', 'categoriaID');
-            $table->foreignId('proveedorID')->constrained('proveedores', 'proveedorID');
+            $table->foreignId('proveedorID')->constrained('proveedors', 'proveedorID');
         });
     }
 
@@ -31,6 +31,6 @@ class CreateProductosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proveedores');
+        Schema::dropIfExists('productos');
     }
 }

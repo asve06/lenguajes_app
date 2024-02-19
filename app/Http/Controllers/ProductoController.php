@@ -17,13 +17,14 @@ class ProductoController extends Controller
     {
         $productos = Producto::with('categoria', 'proveedor')->get();
         $categorias = Categoria::all();
-        return view('user.producto', ['productos' => $productos, 'categorias' => $categorias]);
+        $proveedors = Proveedor::all();
+        return view('user.producto', ['productos' => $productos, 'categorias' => $categorias, 'proveedors' => $proveedors]);
     }
 
 
     public function create()
     {
-        //return view('adds.cproducto');
+        //
     }
 
 
@@ -34,8 +35,8 @@ class ProductoController extends Controller
             'precio' => 'required',
             'descripcion' => 'required',
             'existencia_actual' => 'required',
-            'categoriaId' => 'required',
-            'proveedorID' => 'required',
+            'categoriaID' => 'required|exists:categorias,categoriaID',
+            'proveedorID' => 'required|exists:proveedors,proveedorID',
         ]);
         Producto::create($request->all());
         return redirect()->route('productos.index')->with('success', 'producto created successfully');
@@ -48,8 +49,7 @@ class ProductoController extends Controller
 
     public function edit(Producto $producto)
     {
-        $producto = Producto::find($producto->productoID);
-        return view('productos.edit', compact('producto'));
+        //
     }
 
     public function update(Request $request, Producto $producto)
@@ -59,17 +59,15 @@ class ProductoController extends Controller
             'precio' => 'required',
             'descripcion' => 'required',
             'existencia_actual' => 'required',
-            //'categoriaID' => 'required',
-            //'proveedorID' => 'required|exists:proveedores,proveedorID'
+            'categoriaID' => 'required|exists:categorias,categoriaID',
+            'proveedorID' => 'required|exists:proveedors,proveedorID',
         ]);
-
         $producto->update($request->all());
         return redirect()->route('productos.index')->with('success', 'Producto actualizado exitosamente');
     }
 
     public function destroy(Producto $producto)
     {
-        $producto = Producto::find($producto->productoID);
         $producto->delete();
         return redirect()->route('productos.index')->with('success', 'producto eliminada exitosamente');
     }

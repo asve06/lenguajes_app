@@ -6,8 +6,8 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Cantidad Ingresada</th>
-      <th scope="col">Time</th>
-      <th scope="col">Productos</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Producto</th>
       <th scope="col">Editar</th>
       <th scope="col">Eliminar</th>
     </tr>
@@ -18,10 +18,12 @@
       <th scope="row">{{ $ingreso->ingresoID }}</th>
       <td>{{ $ingreso->cantidad_ingresada }}</td>
       <td>{{ $ingreso->created_at }}</td> 
-      <td>{{ $ingreso->producto->nombre }}</td> <!-- Mover esta línea fuera del modal -->
-
+      <td>{{ $ingreso->producto->nombre }}</td>
       <td>
-        <a href="{{ route('ingresos.edit', ['ingreso'=>$ingreso->ingresoID]) }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modaleditari{{ $ingreso->ingresoID }}">Editar</a>
+        <button class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#modaleditar" 
+        data-ingresoid="{{ $ingreso->ingresoID }}" 
+        data-cantidad_ingresada="{{ $ingreso->cantidad_ingresada }}"
+        data-productoid="{{ $ingreso->productoID }}"</button>        
       </td>
       <td>
         <form action="{{ route('ingresos.destroy', ['ingreso'=>$ingreso->ingresoID]) }}" method="POST">
@@ -34,12 +36,12 @@
     @endforeach
     <tr>
       <th scope="row">
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalcreari">+</button>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalcrear">+</button>
       </th>
     </tr>
   </tbody>
 </table>
-<div class="modal" id="modalcreari" tabindex="-1">
+<div class="modal" id="modalcrear" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -51,11 +53,16 @@
         <div class="modal-body">
           <div class="mb-3">
             <label for="cantidad_ingresada" class="form-label">Cantidad Ingresada</label>
-            <input type="text" class="form-control" id="cantidad_ingresada" name="cantidad_ingresada">
+            <input type="text" class="form-control" id="cantidad_ingresada" name="cantidad_ingresada" required>
           </div>
           <div class="mb-3">
-            <label for="productoId" class="form-label">Producto ID</label>
-            <input type="text" class="form-control" id="productoId" name="productoId">
+            <label for="productoID" class="form-label">Producto</label>
+            <select class="form-select" id="productoID" name="productoID" required>
+                <option value="">Selecciona un Producto</option>
+                @foreach ($productos as $producto)
+                    <option value="{{ $producto->productoID }}">{{ $producto->nombre }}</option>
+                @endforeach
+            </select>
           </div>
         </div>
         <div class="modal-footer">
@@ -66,28 +73,55 @@
     </div>
   </div>
 </div>
-<div class="modal" id="modaleditari{{ $ingreso->ingresoID }}" tabindex="-1">
+<div class="modal" id="modaleditar" tabindex="-1">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Editar Ingreso</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form action="{{ route('ingresos.update',['ingreso'=>$ingreso->ingresoID]) }}" method="POST">
-        @csrf
-        @method('PUT')
-        <div class="modal-body">
-          <div class="mb-3">
-            <label for="cantidad_ingresada" class="form-label">Cantidad Ingresada</label>
-            <input value="{{ $ingreso->cantidad_ingresada ?? 'No encontrado' }}" type="text" class="form-control" id="cantidad_ingresada" name="cantidad_ingresada">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Editar Proveedor</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-proveedor="Close"></button>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary">Guardar</button>
-        </div>
-      </form>
-    </div>
+          <form method="POST">
+              @csrf
+              @method('PUT')
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="cantidad_ingresada" class="form-label">Cantidad Ingresada</label>
+                  <input type="text" class="form-control" id="cantidad_ingresada" name="cantidad_ingresada" required>
+                </div>
+                <div class="mb-3">
+                  <label for="productoID" class="form-label">Producto</label>
+                  <select class="form-select" id="productoID" name="productoID" required>
+                      <option value="">Selecciona un Producto</option>
+                      @foreach ($productos as $producto)
+                          <option value="{{ $producto->productoID }}">{{ $producto->nombre }}</option>
+                      @endforeach
+                  </select>
+                </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+              </div>
+          </form>
+      </div>
   </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+$('.editBtn').click(function(){
+  var ingresoId = $(this).data('ingresoid');
+  var cantidad_ingresada = $(this).data('cantidad_ingresada');
+  var productoId = $(this).data('productoID');
+  
+  var form = $('#modaleditar form');
+  var actionUrl = "{{ route('ingresos.update', ['ingreso' => ':id']) }}".replace(':id', ingresoId);
+  
+  form.attr('action', actionUrl);
+  $('#modaleditar #cantidad_ingresada').val(cantidad_ingresada);
+  $('#modaleditar #productoID').val(productoId);
+
+});
+</script>
 @endsection

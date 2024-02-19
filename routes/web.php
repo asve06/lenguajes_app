@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\IngresoController;
+use App\Http\Controllers\ProveedorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +28,10 @@ Route::get('/login', [LoginController::class, 'show']);
 Route::post('/login', [LoginController::class, 'login']);
 
 
-Route::resource('/categorias', CategoriaController::class);
-Route::resource('/productos', ProductoController::class);
-Route::resource('/ingresos', IngresoController::class);
+Route::resource('categorias', CategoriaController::class);
+Route::resource('productos', ProductoController::class);
+Route::resource('ingresos', IngresoController::class);
+Route::resource('proveedors', ProveedorController::class);
 
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/logout', [LogoutController::class, 'logout']);
-

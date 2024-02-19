@@ -19,7 +19,7 @@ class CategoriaController extends Controller
 
     public function create()
     {
-        //return view('adds.cCategoria');
+        //
     }
 
 
@@ -41,8 +41,7 @@ class CategoriaController extends Controller
 
     public function edit(Categoria $categoria)
     {
-        $categoria = Categoria::find($categoria->categoriaID);
-        return view('categorias.edit', compact('categoria'));
+        //
     }
 
     public function update(Request $request, Categoria $categoria)
@@ -51,7 +50,6 @@ class CategoriaController extends Controller
             'nombre' => 'required',
             'detalles' => 'required',
         ]);
-        $categoria = Categoria::find($categoria->categoriaID);
         $categoria->update($request->all());
 
         return redirect()->route('categorias.index')->with('success', 'categoria actualizada exitosamente');
@@ -59,7 +57,6 @@ class CategoriaController extends Controller
 
     public function destroy(Categoria $categoria)
     {
-        $categoria = Categoria::find($categoria->categoriaID);
         $categoria->delete();
         return redirect()->route('categorias.index')->with('success', 'categoria eliminada exitosamente');
     }

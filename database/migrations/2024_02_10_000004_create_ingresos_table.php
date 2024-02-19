@@ -17,7 +17,7 @@ class CreateIngresosTable extends Migration
             $table->id('ingresoID');
             $table->integer('cantidad_ingresada');
             $table->timestamps();
-            $table->foreignId('productoId')->constrained('productos', 'productoID');
+            $table->foreignId('productoID')->constrained('productos', 'productoID');
         });
     }
 

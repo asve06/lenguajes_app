@@ -19,7 +19,7 @@ class CreateTriggersForPostgresql extends Migration
             RETURNS TRIGGER AS $$
             BEGIN
               UPDATE Productos
-              SET existenciaactual = existenciaactual + NEW.cantidadIngresada
+              SET existencia_actual = existencia_actual + NEW.cantidad_ingresada
               WHERE productoID = NEW.productoID;
               RETURN NEW;
             END;

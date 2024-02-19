@@ -13,11 +13,11 @@ class Ingreso extends Model
 
     protected $fillable = [
         'cantidad_ingresada',
-        'productoId',
+        'productoID',
     ];
     public function producto()
     {
-        return $this->belongsTo(Producto::class, 'productoId');
+        return $this->belongsTo(Producto::class, 'productoID');
     }
 
     
