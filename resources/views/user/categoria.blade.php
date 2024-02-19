@@ -5,11 +5,11 @@
 <table class="table">
   <thead>
     <tr>
-      <th class="col-1" scope="col">Id</th>
-      <th class="col-3"scope="col">Nombre</th>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
       <th scope="col">Detalles</th>
-      <th class="col-1" scope="col">Editar</th>
-      <th class="col-1" scope="col">Eliminar</th>
+      <th scope="col">Editar</th>
+      <th scope="col">Eliminar</th>
   </thead>
   <tbody>
     @foreach ($categorias as $categoria)

@@ -46,15 +46,15 @@
                                     <span>Categorias</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link text-dark" href="/productos">
                                     <span>Productos</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/proveedores">
                                     <span>Proveedores</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link text-dark" href="/ingresos">
                                     <span>Ingresos</span></a>
                             </li>
                             <li class="nav-item">

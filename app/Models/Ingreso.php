@@ -9,5 +9,16 @@ class Ingreso extends Model
 {
     use HasFactory;
 
-    //protected $fillable = ['nombre','descripcion'];
+    protected $primaryKey = 'ingresoID';
+
+    protected $fillable = [
+        'cantidad_ingresada',
+        'productoId',
+    ];
+    public function producto()
+    {
+        return $this->belongsTo(Producto::class, 'productoId');
+    }
+
+    
 }
