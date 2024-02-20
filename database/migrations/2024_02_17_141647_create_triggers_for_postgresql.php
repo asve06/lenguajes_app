@@ -38,9 +38,9 @@ class CreateTriggersForPostgresql extends Migration
               nueva_existencia INT;
             BEGIN
               UPDATE productos
-              SET existenciaActual = existenciaActual - NEW.cantidadEgresada
+              SET existencia_actual = existencia_actual - NEW.cantidad_egresada
               WHERE productoid = NEW.productoid
-              RETURNING existenciaActual INTO nueva_existencia;
+              RETURNING existencia_actual INTO nueva_existencia;
 
               IF nueva_existencia < 0 THEN
                 RAISE EXCEPTION \'La existencia actual no puede ser negativa.\';

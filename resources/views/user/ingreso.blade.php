@@ -1,5 +1,6 @@
 @extends('layout.layout')
 @section('content')
+@auth
 <h1 class="mb-5">Ingresos</h1>
 <table class="table">
   <thead>
@@ -123,5 +124,7 @@ $('.editBtn').click(function(){
   $('#modaleditar #productoid').val(productoid);
 
 });
+});
 </script>
+@endauth
 @endsection

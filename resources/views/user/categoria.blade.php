@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @section('content')
+@auth
 <h1 class="mb-5">Categorias</h1>
-@yield('content')
 <table class="table">
   <thead>
     <tr>
@@ -112,4 +112,5 @@ $(document).ready(function(){
   });
 });
 </script>
+@endauth
 @endsection

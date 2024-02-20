@@ -1,5 +1,6 @@
 @extends('layout.layout')
 @section('content')
+@auth
 <h1 class="mb-5">Proveedores</h1>
 <table class="table">
     <thead>
@@ -138,4 +139,5 @@ $(document).ready(function(){
   });
 });
 </script>
+@endauth
 @endsection

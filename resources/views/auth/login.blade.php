@@ -43,7 +43,7 @@
                             <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Ingresa a tu cuenta</h5>
 
                             <div class="form-outline mb-4">
-                              <label class="form-label" for="username">Email</label>
+                              <label class="form-label" for="username">Email o Username</label>
                               <input type="username" name="username" id="username" class="form-control" required/>
                             </div>
           

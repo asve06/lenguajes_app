@@ -1,5 +1,6 @@
 @extends('layout.layout')
 @section('content')
+@auth  
 <h1 class="mb-5">Productos</h1>
 <table class="table">
   <thead>
@@ -27,17 +28,16 @@
         <td>{{ $producto->proveedor->nombre}}</td>
         <td>
           <button class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#modaleditar" 
-              data-productoid="{{ $producto->productoid }}" 
-              data-nombre="{{ $producto->nombre }}"
-              data-precio="{{ $producto->precio }}"
-              data-descripcion="{{ $producto->descripcion }}"
-              data-existencia_actual="{{ $producto->existencia_actual }}"
-              data-categoriaid="{{ $producto->categoriaID }}"
-              data-proveedorid="{{ $producto->proveedorID }}">Editar</button> 
-              
+          data-productoid="{{ $producto->productoid }}" 
+          data-nombre="{{ $producto->nombre }}"
+          data-precio="{{ $producto->precio }}"
+          data-descripcion="{{ $producto->descripcion }}"
+          data-existencia_actual="{{ $producto->existencia_actual }}"
+          data-categoriaid="{{ $producto->categoriaID }}"
+          data-proveedorid="{{ $producto->proveedorID }}">Editar</button> 
         </td>
         <td>
-          <form action="{{ route('productos.destroy', ['producto'=>$producto->productoid]) }}" method="POST">
+          <form action="{{route('productos.destroy', ['producto'=>$producto->productoid])}}" method="POST">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger">x</button>
@@ -184,4 +184,5 @@ $(document).ready(function(){
   });
 });
 </script>
+@endauth
 @endsection
