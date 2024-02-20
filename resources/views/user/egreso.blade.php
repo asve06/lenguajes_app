@@ -23,7 +23,7 @@
                 <button class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#modaleditar" 
                 data-egresoid="{{ $egreso->egresoID }}" 
                 data-cantidad_egresada="{{ $egreso->cantidad_egresada }}"
-                data-productoid="{{ $egreso->productoID }}">Editar</button>        
+                data-productoid="{{ $egreso->productoid }}">Editar</button>        
             </td>
             <td>
                 <form action="{{ route('egresos.destroy', ['egreso'=>$egreso->egresoID]) }}" method="POST">
@@ -56,11 +56,11 @@
                         <input type="text" class="form-control" id="cantidad_egresada" name="cantidad_egresada" required>
                     </div>
                     <div class="mb-3">
-                        <label for="productoID" class="form-label">Producto</label>
-                        <select class="form-select" id="productoID" name="productoID" required>
+                        <label for="productoid" class="form-label">Producto</label>
+                        <select class="form-select" id="productoid" name="productoid" required>
                                 <option value="">Selecciona un Producto</option>
                                 @foreach ($productos as $producto)
-                                        <option value="{{ $producto->productoID }}">{{ $producto->nombre }}</option>
+                                        <option value="{{ $producto->productoid }}">{{ $producto->nombre }}</option>
                                 @endforeach
                         </select>
                     </div>
@@ -89,11 +89,11 @@
                                     <input type="text" class="form-control" id="cantidad_egresada" name="cantidad_egresada" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="productoID" class="form-label">Producto</label>
-                                    <select class="form-select" id="productoID" name="productoID" required>
+                                    <label for="productoid" class="form-label">Producto</label>
+                                    <select class="form-select" id="productoid" name="productoid" required>
                                             <option value="">Selecciona un Producto</option>
                                             @foreach ($productos as $producto)
-                                                    <option value="{{ $producto->productoID }}">{{ $producto->nombre }}</option>
+                                                    <option value="{{ $producto->productoid }}">{{ $producto->nombre }}</option>
                                             @endforeach
                                     </select>
                                 </div>
@@ -113,14 +113,14 @@ $(document).ready(function(){
 $('.editBtn').click(function(){
     var egresoId = $(this).data('egresoid');
     var cantidad_egresada = $(this).data('cantidad_egresada');
-    var productoId = $(this).data('productoID');
+    var productoid = $(this).data('productoid');
     
     var form = $('#modaleditar form');
     var actionUrl = "{{ route('egresos.update', ['egreso' => ':id']) }}".replace(':id', egresoId);
     
     form.attr('action', actionUrl);
     $('#modaleditar #cantidad_egresada').val(cantidad_egresada);
-    $('#modaleditar #productoID').val(productoId);
+    $('#modaleditar #productoid').val(productoid);
 
 });
 </script>

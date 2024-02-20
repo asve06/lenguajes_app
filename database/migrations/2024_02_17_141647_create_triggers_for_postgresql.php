@@ -18,15 +18,15 @@ class CreateTriggersForPostgresql extends Migration
             CREATE OR REPLACE FUNCTION aumentar_existencia()
             RETURNS TRIGGER AS $$
             BEGIN
-              UPDATE Productos
+              UPDATE productos
               SET existencia_actual = existencia_actual + NEW.cantidad_ingresada
-              WHERE productoID = NEW.productoID;
+              WHERE productoid = NEW.productoid;
               RETURN NEW;
             END;
             $$ LANGUAGE plpgsql;
 
             CREATE TRIGGER trg_aumentar_existencia
-            AFTER INSERT ON Ingresos
+            AFTER INSERT ON ingresos
             FOR EACH ROW
             EXECUTE FUNCTION aumentar_existencia();
         ');
@@ -37,9 +37,9 @@ class CreateTriggersForPostgresql extends Migration
             DECLARE
               nueva_existencia INT;
             BEGIN
-              UPDATE Productos
+              UPDATE productos
               SET existenciaActual = existenciaActual - NEW.cantidadEgresada
-              WHERE productoID = NEW.productoID
+              WHERE productoid = NEW.productoid
               RETURNING existenciaActual INTO nueva_existencia;
 
               IF nueva_existencia < 0 THEN
@@ -51,7 +51,7 @@ class CreateTriggersForPostgresql extends Migration
             $$ LANGUAGE plpgsql;
 
             CREATE TRIGGER trg_disminuir_existencia
-            AFTER INSERT ON Egresos
+            AFTER INSERT ON egresos
             FOR EACH ROW
             EXECUTE FUNCTION disminuir_existencia();
         ');

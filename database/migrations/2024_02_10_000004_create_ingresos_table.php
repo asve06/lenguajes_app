@@ -18,8 +18,7 @@ class CreateIngresosTable extends Migration
             $table->integer('cantidad_ingresada');
             $table->timestamps();
         
-            $table->unsignedBigInteger('productoID');
-            $table->foreign('productoID')->references('productoID')->on('productos');
+            $table->foreignId('productoid')->constrained('productos', 'productoid')->onDelete('cascade');
         });
     }
 

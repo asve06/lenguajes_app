@@ -29,7 +29,7 @@ class IngresoController extends Controller
 {
     $request->validate([
         'cantidad_ingresada' => 'required',
-        'productoID' => 'required|exists:productos,productoID'
+        'productoid' => 'required|exists:productos,productoid'
     ]);
     Ingreso::create($request->all());
     return redirect()->route('ingresos.index')->with('success', 'Ingreso creado exitosamente');
@@ -50,7 +50,7 @@ class IngresoController extends Controller
     {
         $request->validate([
             'cantidad_ingresada' => 'required',
-            'productoID' => 'required|exists:productos,productoID'
+            'productoid' => 'required|exists:productos,productoid'
         ]);
 
         $ingreso->update($request->all());
