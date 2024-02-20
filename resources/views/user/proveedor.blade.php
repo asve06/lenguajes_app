@@ -92,19 +92,19 @@
                 @method('PUT')
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="nombre" class="form-proveedor">Nombre</label>
+                        <label for="nombre" class="form-label">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" required>
                     </div>
                     <div class="mb-3">
-                        <label for="apellido" class="form-proveedor">Apellido</label>
+                        <label for="apellido" class="form-label">Apellido</label>
                         <input type="text" class="form-control" id="apellido" name="apellido" required>
                     </div>
                     <div class="mb-3">
-                        <label for="numero" class="form-proveedor">Número</label>
+                        <label for="numero" class="form-label">Número</label>
                         <input type="text" class="form-control" id="numero" name="numero" required>
                     </div>
                     <div class="mb-3">
-                        <label for="direccion" class="form-proveedor">Dirección</label>
+                        <label for="direccion" class="form-label">Dirección</label>
                         <input type="text" class="form-control" id="direccion" name="direccion" required>
                     </div>
                 </div>

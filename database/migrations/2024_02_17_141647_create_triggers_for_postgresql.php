@@ -20,7 +20,7 @@ class CreateTriggersForPostgresql extends Migration
             BEGIN
               UPDATE Productos
               SET existencia_actual = existencia_actual + NEW.cantidad_ingresada
-              WHERE productoID = NEW.productoID;
+              WHERE "productoID = NEW.productoID;
               RETURN NEW;
             END;
             $$ LANGUAGE plpgsql;

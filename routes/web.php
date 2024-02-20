@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\EgresoController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::resource('productos', ProductoController::class);
 Route::resource('ingresos', IngresoController::class);
 Route::resource('egresos', EgresoController::class);
 Route::resource('proveedors', ProveedorController::class);
+Route::resource('users', UserController::class);
 
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/logout', [LogoutController::class, 'logout']);

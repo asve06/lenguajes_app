@@ -117,20 +117,20 @@
               @method('PUT')
               <div class="modal-body">
                 <div class="mb-3">
-                    <label for="nombre" class="form-producto">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
                 </div>
                 <div class="mb-3">
-                    <label for="precio" class="form-producto">Precio</label>
-                    <input type="text" class="form-control" id="precio" name="precio">
+                    <label for="precio" class="form-label">Precio</label>
+                    <input type="text" class="form-control" id="precio" name="precio" required>
                 </div>
                 <div class="mb-3">
-                    <label for="descripcion" class="form-producto">Descripcion</label>
-                    <input type="text" class="form-control" id="descripcion" name="descripcion">
+                    <label for="descripcion" class="form-label">Descripcion</label>
+                    <input type="text" class="form-control" id="descripcion" name="descripcion" required>
                 </div>
                 <div class="mb-3">
-                  <label for="existencia_actual" class="form-producto">Existencia</label>
-                  <input type="text" class="form-control" id="existencia_actual" name="existencia_actual">
+                  <label for="existencia_actual" class="form-label">Existencia</label>
+                  <input type="text" class="form-control" id="existencia_actual" name="existencia_actual" required>
                 </div>
                 <div class="mb-3">
                   <label for="categoriaID" class="form-label">Categoría</label>
