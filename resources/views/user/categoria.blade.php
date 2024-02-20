@@ -78,12 +78,12 @@
               @method('PUT')
               <div class="modal-body">
                   <div class="mb-3">
-                      <label for="nombre" class="form-categoria">Nombre</label>
-                      <input type="text" class="form-control" id="nombre" name="nombre">
+                      <label for="nombre" class="form-label">Nombre</label>
+                      <input type="text" class="form-control" id="nombre" name="nombre" required>
                   </div>
                   <div class="mb-3">
-                      <label for="detalles" class="form-categoria">Detalles</label>
-                      <input type="text" class="form-control" id="detalles" name="detalles">
+                      <label for="detalles" class="form-label">Detalles</label>
+                      <input type="text" class="form-control" id="detalles" name="detalles" required>
                   </div>
               </div>
               <div class="modal-footer">

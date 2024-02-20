@@ -58,17 +58,13 @@
                                     <span>Ingresos</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/egresos">
                                     <span>Egresos</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span>Registros</span></a>
                             </li>
                         </ul>
                     </div>
                     <div class="card-footer text-center py-2">
-                        <a class="btn btn-link btn-sm" href="#">View Profile </a>
+                        <a class="btn btn-link btn-sm" href="/users">View Profile </a>
                     </div>
                 </div>
             </nav>
