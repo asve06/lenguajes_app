@@ -23,7 +23,7 @@
         <button class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#modaleditar" 
         data-ingresoid="{{ $ingreso->ingresoID }}" 
         data-cantidad_ingresada="{{ $ingreso->cantidad_ingresada }}"
-        data-productoid="{{ $ingreso->productoID }}">Editar</button>        
+        data-productoid="{{ $ingreso->productoid }}">Editar</button>        
       </td>
       <td>
         <form action="{{ route('ingresos.destroy', ['ingreso'=>$ingreso->ingresoID]) }}" method="POST">
@@ -56,11 +56,11 @@
             <input type="text" class="form-control" id="cantidad_ingresada" name="cantidad_ingresada" required>
           </div>
           <div class="mb-3">
-            <label for="productoID" class="form-label">Producto</label>
-            <select class="form-select" id="productoID" name="productoID" required>
+            <label for="productoid" class="form-label">Producto</label>
+            <select class="form-select" id="productoid" name="productoid" required>
                 <option value="">Selecciona un Producto</option>
                 @foreach ($productos as $producto)
-                    <option value="{{ $producto->productoID }}">{{ $producto->nombre }}</option>
+                    <option value="{{ $producto->productoid }}">{{ $producto->nombre }}</option>
                 @endforeach
             </select>
           </div>
@@ -89,11 +89,11 @@
                   <input type="text" class="form-control" id="cantidad_ingresada" name="cantidad_ingresada" required>
                 </div>
                 <div class="mb-3">
-                  <label for="productoID" class="form-label">Producto</label>
-                  <select class="form-select" id="productoID" name="productoID" required>
+                  <label for="productoid" class="form-label">Producto</label>
+                  <select class="form-select" id="productoid" name="productoid" required>
                       <option value="">Selecciona un Producto</option>
                       @foreach ($productos as $producto)
-                          <option value="{{ $producto->productoID }}">{{ $producto->nombre }}</option>
+                          <option value="{{ $producto->productoid }}">{{ $producto->nombre }}</option>
                       @endforeach
                   </select>
                 </div>
@@ -113,14 +113,14 @@ $(document).ready(function(){
 $('.editBtn').click(function(){
   var ingresoId = $(this).data('ingresoid');
   var cantidad_ingresada = $(this).data('cantidad_ingresada');
-  var productoId = $(this).data('productoID');
+  var productoid = $(this).data('productoid');
   
   var form = $('#modaleditar form');
   var actionUrl = "{{ route('ingresos.update', ['ingreso' => ':id']) }}".replace(':id', ingresoId);
   
   form.attr('action', actionUrl);
   $('#modaleditar #cantidad_ingresada').val(cantidad_ingresada);
-  $('#modaleditar #productoID').val(productoId);
+  $('#modaleditar #productoid').val(productoid);
 
 });
 </script>

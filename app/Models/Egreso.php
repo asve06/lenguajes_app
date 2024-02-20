@@ -13,11 +13,11 @@ class Egreso extends Model
 
     protected $fillable = [
         'cantidad_egresada',
-        'productoID',
+        'productoid',
     ];
     public function producto()
     {
-        return $this->belongsTo(Producto::class, 'productoID');
+        return $this->belongsTo(Producto::class, 'productoid');
     }
 
     

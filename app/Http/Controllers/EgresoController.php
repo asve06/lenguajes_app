@@ -29,7 +29,7 @@ class EgresoController extends Controller
     {
         $request->validate([
             'cantidad_egresada' => 'required',
-            'productoID' => 'required|exists:productos,productoID'
+            'productoid' => 'required|exists:productos,productoid'
         ]);
         Egreso::create($request->all());
         return redirect()->route('egresos.index')->with('success', 'Egreso creado exitosamente');
@@ -50,7 +50,7 @@ class EgresoController extends Controller
     {
         $request->validate([
             'cantidad_egresada' => 'required',
-            'productoID' => 'required|exists:productos,productoID'
+            'productoid' => 'required|exists:productos,productoid'
         ]);
 
         $egreso->update($request->all());

@@ -18,7 +18,7 @@
   <tbody>
     @foreach ($productos as $producto)
       <tr>
-        <th scope="row">{{ $producto->productoID }}</th>
+        <th scope="row">{{ $producto->productoid }}</th>
         <td>{{ $producto->nombre }}</td>
         <td>{{ $producto->precio }}</td>
         <td>{{ $producto->descripcion }}</td>
@@ -27,7 +27,7 @@
         <td>{{ $producto->proveedor->nombre}}</td>
         <td>
           <button class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#modaleditar" 
-              data-productoid="{{ $producto->productoID }}" 
+              data-productoid="{{ $producto->productoid }}" 
               data-nombre="{{ $producto->nombre }}"
               data-precio="{{ $producto->precio }}"
               data-descripcion="{{ $producto->descripcion }}"
@@ -37,7 +37,7 @@
               
         </td>
         <td>
-          <form action="{{ route('productos.destroy', ['producto'=>$producto->productoID]) }}" method="POST">
+          <form action="{{ route('productos.destroy', ['producto'=>$producto->productoid]) }}" method="POST">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger">x</button>
@@ -163,24 +163,24 @@
 <script>
 $(document).ready(function(){
   $('.editBtn').click(function(){
-    var productoId = $(this).data('productoid');
+    var productoid = $(this).data('productoid');
     var nombre = $(this).data('nombre');
     var precio = $(this).data('precio');
     var descripcion = $(this).data('descripcion');
     var existencia = $(this).data('existencia_actual');
-    var categoriaId = $(this).data('categoriaid');
-    var proveedorId = $(this).data('proveedorid');
+    var categoriaid = $(this).data('categoriaid');
+    var proveedorid = $(this).data('proveedorid');
     
     var form = $('#modaleditar form');
-    var actionUrl = "{{ route('productos.update', ['producto' => ':id']) }}".replace(':id', productoId);
+    var actionUrl = "{{ route('productos.update', ['producto' => ':id']) }}".replace(':id', productoid);
     
     form.attr('action', actionUrl);
     $('#modaleditar #nombre').val(nombre);
     $('#modaleditar #precio').val(precio);
     $('#modaleditar #descripcion').val(descripcion);
     $('#modaleditar #existencia_actual').val(existencia);
-    $('#modaleditar #categoriaID').val(categoriaId);
-    $('#modaleditar #proveedorID').val(proveedorId);
+    $('#modaleditar #categoriaID').val(categoriaid);
+    $('#modaleditar #proveedorID').val(proveedorid);
   });
 });
 </script>
