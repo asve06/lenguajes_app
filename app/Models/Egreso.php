@@ -9,5 +9,16 @@ class Egreso extends Model
 {
     use HasFactory;
 
-    //protected $fillable = ['nombre','descripcion'];
+    protected $primaryKey = 'egresoID';
+
+    protected $fillable = [
+        'cantidad_egresada',
+        'productoID',
+    ];
+    public function producto()
+    {
+        return $this->belongsTo(Producto::class, 'productoID');
+    }
+
+    
 }

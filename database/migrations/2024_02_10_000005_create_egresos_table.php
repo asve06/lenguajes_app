@@ -17,7 +17,9 @@ class CreateEgresosTable extends Migration
             $table->id('egresoID');
             $table->integer('cantidad_egresada');
             $table->timestamps();
-            $table->foreignId('productoId')->constrained('productos', 'productoID');
+            
+            $table->unsignedBigInteger('productoID');
+            $table->foreign('productoID')->references('productoID')->on('productos');
         });
     }
 

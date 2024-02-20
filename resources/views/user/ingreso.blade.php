@@ -23,7 +23,7 @@
         <button class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#modaleditar" 
         data-ingresoid="{{ $ingreso->ingresoID }}" 
         data-cantidad_ingresada="{{ $ingreso->cantidad_ingresada }}"
-        data-productoid="{{ $ingreso->productoID }}"</button>        
+        data-productoid="{{ $ingreso->productoID }}">Editar</button>        
       </td>
       <td>
         <form action="{{ route('ingresos.destroy', ['ingreso'=>$ingreso->ingresoID]) }}" method="POST">
